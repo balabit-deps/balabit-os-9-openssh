@@ -1,3 +1,12 @@
+openssh (1:8.9p1-3ubuntu0.11) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: MitM with VerifyHostKeyDNS option
+    - debian/patches/CVE-2025-26465.patch: fix error code handling in
+      krl.c, ssh-agent.c, ssh-sk-client.c, sshconnect2.c, sshsig.c.
+    - CVE-2025-26465
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Tue, 11 Feb 2025 08:51:51 -0500
+
 openssh (1:8.9p1-3ubuntu0.10) jammy-security; urgency=medium
 
   * SECURITY UPDATE: remote code execution via signal handler race
