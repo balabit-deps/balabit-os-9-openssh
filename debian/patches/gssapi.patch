@@ -3842,6 +3842,17 @@ index b25225e64..ae38d05db 100644
  #endif /* GSSAPI */
  
  static int
+@@ -1329,7 +1475,9 @@ sign_and_send_pubkey(struct ssh *ssh, Identity *id)
+ 
+ 	/* prefer host-bound pubkey signatures if supported by server */
+ 	if ((ssh->kex->flags & KEX_HAS_PUBKEY_HOSTBOUND) != 0 &&
+-	    (options.pubkey_authentication & SSH_PUBKEY_AUTH_HBOUND) != 0) {
++	    (options.pubkey_authentication & SSH_PUBKEY_AUTH_HBOUND) != 0 &&
++	    /* initial_hostkey may be NULL with GSS-API key exchange */
++	    ssh->kex->initial_hostkey != NULL) {
+ 		hostbound = 1;
+ 		method = "publickey-hostbound-v00@openssh.com";
+ 	}
 diff --git a/sshd.c b/sshd.c
 index ef18ba467..6a6cc4a8e 100644
 --- a/sshd.c

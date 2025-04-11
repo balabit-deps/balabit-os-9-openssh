@@ -1,3 +1,23 @@
+openssh (1:8.9p1-3ubuntu0.13) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: incorrect DisableForwarding directive behaviour
+    - debian/patches/CVE-2025-32728.patch: fix logic error in session.c.
+    - CVE-2025-32728
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Fri, 11 Apr 2025 08:05:47 -0400
+
+openssh (1:8.9p1-3ubuntu0.12) jammy; urgency=medium
+
+  * d/p/gssapi.patch: Fix interaction between gssapi-keyex and pubkey auth
+    (LP: #2028282)
+    Don't prefer host-bound public key signatures if there was no initial
+    host key, as is the case when using GSS-API key exchange.
+    Thanks to Colin Watson for providing patches via Debian Salsa (7d291bb)
+    + d/t/ssh-gssapi: Fix typo in autopkgtest
+    + d/t/ssh-gssapi: Test interaction between gssapi-keyex and pubkey auth.
+
+ -- Lukas Märdian <slyon@ubuntu.com>  Mon, 10 Mar 2025 16:56:45 +0100
+
 openssh (1:8.9p1-3ubuntu0.11) jammy-security; urgency=medium
 
   * SECURITY UPDATE: MitM with VerifyHostKeyDNS option
