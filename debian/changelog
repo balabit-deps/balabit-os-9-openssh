@@ -1,3 +1,21 @@
+openssh (1:8.9p1-3ubuntu0.14) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: GSSAPI Key Exchange issue
+    - debian/patches/gssapi.patch: replace incorrect use of
+      sshpkt_disconnect() with ssh_packet_disconnect() and properly
+      initialize some vars.
+    - CVE-2026-3497
+  * SECURITY UPDATE: Untrusted control characters in usernames
+    - debian/patches/CVE-2025-61984.patch: refuse usernames that include
+      control characters in ssh.c.
+    - CVE-2025-61984
+  * SECURITY UPDATE: Code execution in ProxyCommand via NULL character
+    - debian/patches/CVE-2025-61985.patch: don't allow \0 characters in
+      url-encoded strings in misc.c.
+    - CVE-2025-61985
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Wed, 04 Mar 2026 12:55:04 -0500
+
 openssh (1:8.9p1-3ubuntu0.13) jammy-security; urgency=medium
 
   * SECURITY UPDATE: incorrect DisableForwarding directive behaviour
