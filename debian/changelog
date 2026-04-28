@@ -1,3 +1,31 @@
+openssh (1:8.9p1-3ubuntu0.15) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: unexpected scp setuid and setgid
+    - debian/patches/CVE-2026-35385.patch: clear setuid/setgid bits from
+      downloaded files in scp.c.
+    - CVE-2026-35385
+  * SECURITY UPDATE: command execution via shell metacharacters in username
+    - debian/patches/CVE-2026-35386-pre1.patch: apply validity rules on
+      ProxyJump usernames and hostnames in readconf.c, readconf.h, ssh.c.
+    - debian/patches/CVE-2026-35386.patch: move username check earlier in
+      ssh.c.
+    - CVE-2026-35386
+  * SECURITY UPDATE: use of unintended ECDSA algorithms
+    - debian/patches/CVE-2026-35387_35414.patch: correctly match ECDSA
+      signature algorithms against algorithm allowlists in
+      auth2-hostbased.c, auth2-pubkey.c, sshconnect2.c.
+    - CVE-2026-35387
+  * SECURITY UPDATE: missing connection multiplexing confirmation
+    - debian/patches/CVE-2026-35388.patch: add missing askpass check in
+      mux.c.
+    - CVE-2026-35388
+  * SECURITY UPDATE: authorized_keys principals option mishandling
+    - debian/patches/CVE-2026-35387_35414.patch: check for commas in
+      auth2-pubkey.c.
+    - CVE-2026-35414
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Mon, 27 Apr 2026 20:38:10 -0400
+
 openssh (1:8.9p1-3ubuntu0.14) jammy-security; urgency=medium
 
   * SECURITY UPDATE: GSSAPI Key Exchange issue
